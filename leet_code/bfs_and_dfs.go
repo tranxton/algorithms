@@ -316,22 +316,55 @@ func SumOfLeftLeavesBfs(root *TreeNode) int {
 	return sum
 }
 
-func RightSideView(root *TreeNode) []int {
+func RightSideViewDfs(root *TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
 
 	seen := []int{root.Val}
 
-	rightSeen := RightSideView(root.Right)
+	rightSeen := RightSideViewDfs(root.Right)
 	if len(rightSeen) > 0 {
 		seen = append(seen, rightSeen...)
 	}
 
-	leftSeen := RightSideView(root.Left)
+	leftSeen := RightSideViewDfs(root.Left)
 	if len(leftSeen) > len(rightSeen) {
 		seen = append(seen, leftSeen[len(rightSeen):]...)
 	}
 
 	return seen
+}
+
+func RightSideViewBfs(root *TreeNode) []int {
+	queue := list.New()
+	queue.PushBack(root)
+
+	var (
+		rightSideView []int
+		lastLeafVal   int
+	)
+
+	for queue.Len() > 0 {
+		currentLevelSize := queue.Len()
+		for i := 0; i < currentLevelSize; i++ {
+			leaf := queue.Remove(queue.Front()).(*TreeNode)
+			if leaf == nil {
+				continue
+			}
+
+			lastLeafVal = leaf.Val
+
+			if leaf.Left != nil {
+				queue.PushBack(leaf.Left)
+			}
+			if leaf.Right != nil {
+				queue.PushBack(leaf.Right)
+			}
+		}
+
+		rightSideView = append(rightSideView, lastLeafVal)
+	}
+
+	return rightSideView
 }

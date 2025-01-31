@@ -23,3 +23,16 @@ func MergeTwoLists(list1 *data_structures.ListNode, list2 *data_structures.ListN
 
 	return list1
 }
+
+func ReverseList(head *data_structures.ListNode) *data_structures.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	newHead := ReverseList(head.Next)
+
+	head.Next.Next = head
+	head.Next = nil
+
+	return newHead
+}

@@ -220,11 +220,6 @@ func testingDataStructures() {
 	fmt.Println(data_structures.BreadthFirstSearch(socialNetwork.Users[0], "thom"))
 	fmt.Println(data_structures.DepthFirstSearch(socialNetwork.Users[0], "johny", map[*data_structures.Person]bool{}))
 	fmt.Println(data_structures.TailDepthFirstSearch(socialNetwork.Users[0], "you", map[*data_structures.Person]bool{}, []*data_structures.Person{}))*/
-
-	/*list1 := data_structures.ListNode{Val: 1, Next: &data_structures.ListNode{Val: 2, Next: &data_structures.ListNode{Val: 4}}}
-	list2 := data_structures.ListNode{Val: 4, Next: &data_structures.ListNode{Val: 2, Next: &data_structures.ListNode{Val: 1}}}
-
-	fmt.Println(leet_code.MergeTwoLists(&list1, &list2))*/
 }
 
 func testingGoBasics() {

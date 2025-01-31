@@ -1,5 +1,10 @@
 package data_structures
 
+import (
+	"fmt"
+	"strings"
+)
+
 type SingleLinkedList struct {
 	head *ListNode
 }
@@ -100,4 +105,22 @@ func (list *SingleLinkedList) DeleteFromSingleLinkedList(val int) *SingleLinkedL
 	current = next
 
 	return list
+}
+
+func (head *ListNode) ToString() string {
+	if head == nil {
+		return ""
+	}
+
+	var sb strings.Builder
+
+	for current := head; current != nil; {
+		sb.WriteString(fmt.Sprintf("%d", current.Val))
+		if current.Next != nil {
+			sb.WriteString(" -> ")
+		}
+		current = current.Next
+	}
+
+	return sb.String()
 }

@@ -315,3 +315,23 @@ func SumOfLeftLeavesBfs(root *TreeNode) int {
 
 	return sum
 }
+
+func RightSideView(root *TreeNode) []int {
+	if root == nil {
+		return []int{}
+	}
+
+	seen := []int{root.Val}
+
+	rightSeen := RightSideView(root.Right)
+	if len(rightSeen) > 0 {
+		seen = append(seen, rightSeen...)
+	}
+
+	leftSeen := RightSideView(root.Left)
+	if len(leftSeen) > len(rightSeen) {
+		seen = append(seen, leftSeen[len(rightSeen):]...)
+	}
+
+	return seen
+}

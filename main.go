@@ -37,7 +37,6 @@ func passingLeetCodeProblems() {
 	fmt.Println(leet_code.CountNodes(&tree))*/
 
 	/*fmt.Println(leet_code.MissingNumber([]int{1, 2, 4, 5, 6}))
-	fmt.Println(leet_code.FirstBadVersion(1000))
 	fmt.Println(leet_code.MySqrt(8))
 	fmt.Println(leet_code.Intersection([]int{8, 0, 3}, []int{0, 0}))
 	fmt.Println(leet_code.IsPerfectSquare(1664))

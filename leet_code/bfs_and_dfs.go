@@ -368,3 +368,23 @@ func RightSideViewBfs(root *TreeNode) []int {
 
 	return rightSideView
 }
+
+func IsValidBST(root *TreeNode) bool {
+	return isValidBST(root, nil, nil)
+}
+
+func isValidBST(root *TreeNode, lowerBound *int, upperBound *int) bool {
+	if root == nil {
+		return true
+	}
+
+	if lowerBound != nil && root.Val <= *lowerBound {
+		return false
+	}
+
+	if upperBound != nil && root.Val >= *upperBound {
+		return false
+	}
+
+	return isValidBST(root.Left, lowerBound, &root.Val) && isValidBST(root.Right, &root.Val, upperBound)
+}

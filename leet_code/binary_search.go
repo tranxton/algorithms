@@ -132,10 +132,6 @@ func CountNodes(root *TreeNode) int {
 }
 
 func FirstBadVersion(n int) int {
-	return firstBadVersion(n)
-}
-
-func firstBadVersion(n int) int {
 	left, right := 1, n
 
 	for left <= right {

@@ -23,3 +23,13 @@ func TestRightSideViewBfs(t *testing.T) {
 		t.Errorf("expected %v, got %v", expectedRightSideView, rightSideView)
 	}
 }
+
+func TestIsValidBST(t *testing.T) {
+	bst := &TreeNode{Val: 5, Left: &TreeNode{Val: 4}, Right: &TreeNode{Val: 6, Left: &TreeNode{Val: 3}, Right: &TreeNode{Val: 7}}}
+	isValid := IsValidBST(bst)
+	expectedIsValid := false
+
+	if isValid != expectedIsValid {
+		t.Errorf("expected %t, got %t", expectedIsValid, isValid)
+	}
+}

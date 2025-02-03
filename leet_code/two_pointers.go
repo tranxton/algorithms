@@ -98,3 +98,66 @@ func IsPalindromeTwoPointers(s string) bool {
 
 	return true
 }
+
+func MaxDistanceToNearestPerson(seats []int) int {
+	prevSeat, maxSeat := -1, 0
+
+	for i, seat := range seats {
+		if seat == 1 {
+			if prevSeat == -1 {
+				maxSeat = i
+			} else {
+				maxSeat = max(maxSeat, (i-prevSeat)/2)
+			}
+
+			prevSeat = i
+		}
+	}
+
+	maxSeat = max(maxSeat, len(seats)-1-prevSeat)
+
+	return maxSeat
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+
+	return b
+}
+
+func LongestMonotonicSubarray(arr []int) []int {
+	if len(arr) < 2 {
+		return []int{0, 0}
+	}
+
+	direction, start, maxStart, maxEnd := 0, 0, 0, 0
+
+	for i := 1; i < len(arr); i++ {
+		diff := arr[i] - arr[i-1]
+
+		if diff > 0 {
+			if direction == -1 {
+				start = i - 1
+			}
+
+			direction = 1
+		} else if diff < 0 {
+			if direction == 1 {
+				start = i - 1
+			}
+
+			direction = -1
+		} else {
+			direction = 0
+			start = i
+		}
+
+		if i-start > maxEnd-maxStart {
+			maxStart, maxEnd = start, i
+		}
+	}
+
+	return []int{maxStart, maxEnd}
+}

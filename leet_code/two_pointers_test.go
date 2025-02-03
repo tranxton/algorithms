@@ -49,3 +49,39 @@ func TestIsPalindromeTwoPointers(t *testing.T) {
 		t.Errorf("expected %t, got %t", exceptedResult, result)
 	}
 }
+
+func TestMaxDistanceToNearestPerson(t *testing.T) {
+	//seats := []int{1, 0, 0, 0, 1}
+	//expectedMaxDistanceToNearestPerson := 2
+	//seats := []int{1, 0, 1, 0, 0, 1, 0, 0, 0, 1}
+	//expectedMaxDistanceToNearestPerson := 2
+	seats := []int{1, 0, 1, 0, 0, 0}
+	expectedMaxDistanceToNearestPerson := 3
+	maxDistanceToNearestPerson := MaxDistanceToNearestPerson(seats)
+
+	if maxDistanceToNearestPerson != expectedMaxDistanceToNearestPerson {
+		t.Errorf("expected %d, got %d", expectedMaxDistanceToNearestPerson, maxDistanceToNearestPerson)
+	}
+}
+
+func TestLongestMonotonicSubarray(t *testing.T) {
+	//arr := []int{2, 7, 5, 4, 4, 3}
+	//expectedLongestMonotonicSubarray := []int{1, 3}
+	//arr := []int{1, 1}
+	//expectedLongestMonotonicSubarray := []int{0, 0}
+	//arr := []int{1, 2, 3, 4, 5}
+	//expectedLongestMonotonicSubarray := []int{0, 4}
+	//arr := []int{5, 4, 3, 2, 1}
+	//expectedLongestMonotonicSubarray := []int{0, 4}
+	//arr := []int{1, 3, 5, 4, 2, 0}
+	//expectedLongestMonotonicSubarray := []int{2, 5}
+	//arr := []int{}
+	//expectedLongestMonotonicSubarray := []int{0, 0}
+	arr := []int{1, 3, 5, 4, 2, 2, 2, 2, 2, 2, 0}
+	expectedLongestMonotonicSubarray := []int{0, 2}
+	longestMonotonicSubarray := LongestMonotonicSubarray(arr)
+
+	if !reflect.DeepEqual(longestMonotonicSubarray, expectedLongestMonotonicSubarray) {
+		t.Errorf("expected %v, got %v", expectedLongestMonotonicSubarray, longestMonotonicSubarray)
+	}
+}

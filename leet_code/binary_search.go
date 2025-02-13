@@ -8,6 +8,12 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+type TreeNodeRune struct {
+	Val   rune
+	Left  *TreeNodeRune
+	Right *TreeNodeRune
+}
+
 func SearchInsert(nums []int, target int) int {
 	low, guess, targetInsertIndex, high := 0, 0, 0, len(nums)-1
 

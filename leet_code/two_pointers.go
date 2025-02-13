@@ -1,5 +1,12 @@
 package leet_code
 
+import (
+	"algorithms/algorithms"
+	"fmt"
+	"strconv"
+	"strings"
+)
+
 func RemoveElementExcept(nums []int, val int) int {
 	k := 0 // Pointer for placement of elements not equal to val
 
@@ -160,4 +167,38 @@ func LongestMonotonicSubarray(arr []int) []int {
 	}
 
 	return []int{maxStart, maxEnd}
+}
+
+func MakeRanges(nums []int) string {
+	if len(nums) == 0 {
+		return ""
+	}
+
+	sortedNums := algorithms.QuickSorting(nums)
+	start, end := sortedNums[0], sortedNums[0]
+	var result []string
+
+	for i := 1; i < len(sortedNums); i++ {
+		if end == sortedNums[i]-1 {
+			end = sortedNums[i]
+
+			continue
+		}
+
+		if start == end {
+			result = append(result, strconv.Itoa(end))
+		} else {
+			result = append(result, fmt.Sprintf("%d->%d", start, end))
+		}
+
+		start, end = sortedNums[i], sortedNums[i]
+	}
+
+	if start == end {
+		result = append(result, strconv.Itoa(end))
+	} else {
+		result = append(result, fmt.Sprintf("%d->%d", start, end))
+	}
+
+	return strings.Join(result, ",")
 }

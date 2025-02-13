@@ -85,3 +85,21 @@ func TestLongestMonotonicSubarray(t *testing.T) {
 		t.Errorf("expected %v, got %v", expectedLongestMonotonicSubarray, longestMonotonicSubarray)
 	}
 }
+
+func TestMakeRanges(t *testing.T) {
+	//arr := []int{}
+	//expectedResult := ""
+	//arr := []int{1}
+	//expectedResult := "1"
+	//arr := []int{5, 1, 3, 4, 7, 9, 8, 14}
+	//expectedResult := "1,3->5,7->9,14"
+	//arr := []int{5, 1, 3, 7}
+	//expectedResult := "1,3,5,7"
+	arr := []int{7, 5, 1, 3, 4, 2, 6, 8, 11, 10, 9}
+	expectedResult := "1->11"
+	result := MakeRanges(arr)
+
+	if result != expectedResult {
+		t.Errorf("expected %s, got %s", expectedResult, result)
+	}
+}

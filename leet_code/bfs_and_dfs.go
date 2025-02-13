@@ -3,6 +3,7 @@ package leet_code
 import (
 	"container/list"
 	"math"
+	"slices"
 )
 
 func IsSameTree(p *TreeNode, q *TreeNode) bool {
@@ -387,4 +388,62 @@ func isValidBST(root *TreeNode, lowerBound *int, upperBound *int) bool {
 	}
 
 	return isValidBST(root.Left, lowerBound, &root.Val) && isValidBST(root.Right, &root.Val, upperBound)
+}
+
+func FindSimilarRootsDfs(root *TreeNodeRune) map[string][]string {
+	if root == nil {
+		return map[string][]string{}
+	}
+
+	var subtreeSets = make(map[string][]string)
+
+	var dfs func(node *TreeNodeRune) []rune
+	dfs = func(node *TreeNodeRune) []rune {
+		if node == nil {
+			return []rune{}
+		}
+
+		set := []rune{node.Val}
+		leftSet := dfs(node.Left)
+		rightSet := dfs(node.Right)
+
+		mergedSets := append(set, append(leftSet, rightSet...)...)
+		mergedSetsAsString := string(mergedSets)
+
+		var removeDuplicates func([]rune) []rune
+		removeDuplicates = func(set []rune) []rune {
+			found := make(map[rune]struct{})
+			var result []rune
+
+			for _, item := range set {
+				if _, exists := found[item]; exists {
+					continue
+				}
+
+				found[item] = struct{}{}
+				result = append(result, item)
+			}
+
+			return result
+		}
+
+		sortedSets := removeDuplicates(mergedSets)
+		slices.Sort(sortedSets)
+		sortedSetsAsString := string(sortedSets)
+
+		subtreeSets[sortedSetsAsString] = append(subtreeSets[sortedSetsAsString], mergedSetsAsString)
+
+		return sortedSets
+	}
+
+	dfs(root)
+
+	result := make(map[string][]string)
+	for key, subtreeSet := range subtreeSets {
+		if len(subtreeSet) > 1 {
+			result[key] = subtreeSet
+		}
+	}
+
+	return result
 }

@@ -1,3 +1,3 @@
-module algorithms
+module github.com/tranxton/algorithms
 
-go 1.21
+go 1.24

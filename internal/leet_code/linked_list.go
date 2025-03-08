@@ -1,7 +1,7 @@
 package leet_code
 
 import (
-	"algorithms/data_structures"
+	"github.com/tranxton/algorithms/internal/data_structures"
 )
 
 func MergeTwoLists(list1 *data_structures.ListNode, list2 *data_structures.ListNode) *data_structures.ListNode {

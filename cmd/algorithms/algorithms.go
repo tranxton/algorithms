@@ -1,11 +1,11 @@
 package main
 
 import (
-	"algorithms/go_basics"
+	"github.com/tranxton/algorithms/internal/go_basics"
 )
 
 func main() {
-
+	testingGoBasics()
 }
 
 func passingLeetCodeProblems() {

@@ -1,7 +1,7 @@
 package leet_code
 
 import (
-	"algorithms/data_structures"
+	"github.com/tranxton/algorithms/internal/data_structures"
 	"reflect"
 	"testing"
 )

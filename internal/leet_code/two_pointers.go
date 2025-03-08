@@ -1,8 +1,8 @@
 package leet_code
 
 import (
-	"algorithms/algorithms"
 	"fmt"
+	"github.com/tranxton/algorithms/internal/algorithms"
 	"strconv"
 	"strings"
 )

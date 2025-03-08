@@ -1,6 +1,8 @@
 package leet_code
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestMaxProfit(t *testing.T) {
 	maxProfit := MaxProfit([]int{7, 1, 5, 3, 6, 4})

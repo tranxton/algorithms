@@ -1,14 +1,15 @@
 package go_basics
 
 import (
-	"algorithms/scopes"
 	"fmt"
+	"github.com/tranxton/algorithms/internal/scopes"
 )
 
 const GlobalConst = 1
 
 var (
-	GlobalVariableOne, GlobalVariableTwo = GlobalConst, GlobalConst
+	GlobalVariableTwo = GlobalConst
+	GlobalVariableOne = GlobalConst
 )
 
 func TestingGlobalScope() {
